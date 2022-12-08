@@ -1,6 +1,6 @@
 package dados;
 
-public class Reservation {
+public class Reserve {
     private Teacher teacher;
     private Key key;
     private String id;
@@ -8,7 +8,7 @@ public class Reservation {
     private String solicitation_hour;
     private String devolution_hour;
 
-    public Reservation () {
+    public Reserve() {
         this.teacher = null;
         this.key = null;
         this.activity = "";
@@ -17,7 +17,7 @@ public class Reservation {
         this.id = "";
     }
 
-    public Reservation(Teacher teacher, Key key, String activity, String solicitation_hour, String devolution_hour, String id) {
+    public Reserve(Teacher teacher, Key key, String activity, String solicitation_hour, String devolution_hour, String id) {
         this.teacher = teacher;
         this.key = key;
         this.activity = activity;
