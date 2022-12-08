@@ -3,24 +3,27 @@ package dados;
 public class Reservation {
     private Teacher teacher;
     private Key key;
-    private String activy;
+    private String id;
+    private String activity;
     private String solicitation_hour;
     private String devolution_hour;
 
     public Reservation () {
         this.teacher = null;
         this.key = null;
-        this.activy = "";
+        this.activity = "";
         this.solicitation_hour = "";
         this.devolution_hour = "";
+        this.id = "";
     }
 
-    public Reservation(Teacher teacher, Key key, String activy, String solicitation_hour, String devolution_hour) {
+    public Reservation(Teacher teacher, Key key, String activity, String solicitation_hour, String devolution_hour, String id) {
         this.teacher = teacher;
         this.key = key;
-        this.activy = activy;
+        this.activity = activity;
         this.solicitation_hour = solicitation_hour;
         this.devolution_hour = devolution_hour;
+        this.id = id;
     }
 
     public Teacher getTeacher() {
@@ -38,13 +41,20 @@ public class Reservation {
     public void setKey(Key key) {
         this.key = key;
     }
-
-    public String getActivy() {
-        return activy;
+    public String getId(String id) {
+        return id;
     }
 
-    public void setActivy(String activy) {
-        this.activy = activy;
+    public void setId (String id) {
+        this.id = id;
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public void setActivity(String activity) {
+        this.activity = activity;
     }
 
     public String getSolicitation_hour() {
