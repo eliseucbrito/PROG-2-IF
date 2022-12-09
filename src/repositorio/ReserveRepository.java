@@ -54,31 +54,44 @@ public class ReserveRepository implements ReserveInterface {
 
     }
 
-    @Override
-    public void changeReserve(String id, String infoChange, String newValue) throws EmptyVectorException {
+    @Override // Acho que esse metodo vai ter que ser no pacote NEGOCIO, pq vai ter que usar outras classes
+    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException {
+        Reserve re = null;
         if (this.index > 0) {
             boolean found = false;
             int indexFound = 0;
             Reserve r = null;
 
-            switch (infoChange) {
-                case "Teacher": // implementar o nome do professor quando tiver feito
-
+            for (int i = 0; i <= this.index; i++) { // Looking for reserve
+                if (id.equals(this.reserve[i].getId())) {
+                    found = true;
+                    indexFound = i;
                     break;
-                case "Key":
+                }
+            };
 
-                    break;
-                case "Activity":
+            if (found) {
+                re = this.reserve[indexFound];
 
-                    break;
-                case "Solicitarion Hour":
+                switch (op) {
+                    case 1: // Teacher
 
-                    break;
-                case "Devolution Hour":
+                        break;
+                    case 2: // Key
 
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid option!");
+                        break;
+                    case 3: // Activity
+                        re.setActivity(newValue);
+                        break;
+                    case 4: // Solicitation Hour
+                        re.setSolicitation_hour(newValue);
+                        break;
+                    case 5: // Devolution Hour
+                        re.setDevolution_hour(newValue);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Invalid option!");
+                }
             }
         } else {
             throw new EmptyVectorException();
@@ -86,12 +99,38 @@ public class ReserveRepository implements ReserveInterface {
     }
 
     @Override
-    public Reserve ConsultReserve(String id) {
-        return null;
+    public Reserve ConsultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
+        Reserve re = null;
+        if (this.index > 0) {
+            boolean found = false;
+            int indexFound = 0;
+            for (int i = 0; i < this.index; i++) {
+                if (id.equals((this.reserve[i].getId()))) {
+                    found = true;
+                    indexFound = i;
+                    break;
+                }
+            }
+            if (found) {
+                re = this.reserve[indexFound];
+            } else {
+                throw new ReserveNotFoundedException();
+            }
+        } else {
+            throw new EmptyVectorException();
+        }
+        return re;
     }
 
     @Override
     public Reserve[] list() {
-        return new Reserve[0];
+        Reserve reList[] = null; // creating a new vector of reserves
+        if (this.index >= 0) {
+            reList = new Reserve[this.index+1];
+            for (int i = 0; i < this.index; i++) {
+                reList[i] = this.reserve[i];
+            }
+        }
+        return reList;
     }
 }

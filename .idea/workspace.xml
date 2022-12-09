@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI up to case 3">
-      <change afterPath="$PROJECT_DIR$/src/repositorio/KeyInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repositorio/TeacherInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/negocio/ReserveRegisterInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/RegisterReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
     </list>
@@ -44,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Programação/PROJETOS/Java/Projeto Banco IF",
+    "last_opened_file_path": "D:/Programação/PROJETOS/PROG-2",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -113,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670549617621</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="GUI up to case 3">
+      <created>1670551450915</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670551450915</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
