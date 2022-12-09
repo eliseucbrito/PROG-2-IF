@@ -55,32 +55,17 @@ public class ReserveRepository implements ReserveInterface {
     }
 
     @Override
-    public void changeReserve(String id, String infoChange) throws EmptyVectorException {
+    public void changeReserve(String id, String infoChange, String newValue) throws EmptyVectorException {
         if (this.index > 0) {
             boolean found = false;
             int indexFound = 0;
             Reserve r = null;
-            for (int i = 0; i <= this.index; i++) {
-                if (id.equals(this.reserve[i].getId())) {
-                    found = true;
-                    indexFound = i;
-                    break;
-                }
-                if (found) {
-                    this.reserve[indexFound] = r;
-                }
-            }
 
             switch (infoChange) {
                 case "Teacher": // implementar o nome do professor quando tiver feito
-                    System.out.println("Current teacher"+ r.getTeacher().getName());
-                    System.out.println("New teacher: ");
 
                     break;
                 case "Key":
-
-                    break;
-                case "ID":
 
                     break;
                 case "Activity":

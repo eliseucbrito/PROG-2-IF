@@ -36,9 +36,9 @@ public class app {
             System.out.println("11 - Consult (Key)");
             System.out.println("12 - Consult (Reservation)");
             System.out.println("==============================");
-            System.out.println("10 - List (Teacher)");
-            System.out.println("11 - List (Key)");
-            System.out.println("12 - List (Reservation)");
+            System.out.println("13 - List (Teacher)");
+            System.out.println("14 - List (Key)");
+            System.out.println("15 - List (Reservation)");
             System.out.println("Enter your option: ");
             op = input.nextInt();
 
@@ -71,11 +71,47 @@ public class app {
                         id = String.valueOf(new Date().getTime()); // hour in miliseconds
                         tea = new Teacher(name);
                         re = new Reserve(tea, goal, soli_hour, devol_hour, id);
-                        // falta criar a funcionalidade na fachada
+                        // fazer consulta nos professores, para achar qual o novo com base no nome ou SIAPE
+
                     } catch (Exception e) {
                         System.out.println("ERROR" + e.getMessage());
                     }
                     break;
+                case 4:
+                    // remove teacher
+                    break;
+                case 5:
+                    // remove key
+                    break;
+                case 6:
+                    // remove reservation
+                    break;
+                case 7:
+                    // change teacher
+                    break;
+                case 8:
+                    // change key
+                    break;
+                case 9:
+                    // change reservation
+                    break;
+                case 10:
+                    // consult teacher
+                    break;
+                case 11:
+                    // consult key
+                    break;
+                case 12:
+                    // consult reservation
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                default:
+                    System.out.println("Invalid option!");
             }
         } while (op != 0);
     }

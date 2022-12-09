@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI created">
+    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI up to case 3">
+      <change afterPath="$PROJECT_DIR$/src/repositorio/KeyInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositorio/TeacherInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dados/Reserve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Reserve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -102,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670547189759</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="GUI up to case 3">
+      <created>1670549617621</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670549617621</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,7 +132,8 @@
     <MESSAGE value="before do exceptions" />
     <MESSAGE value="created all packages" />
     <MESSAGE value="GUI created" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI created" />
+    <MESSAGE value="GUI up to case 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI up to case 3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PROG_2$app.ic" NAME="app Coverage Results" MODIFIED="1670549296171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
