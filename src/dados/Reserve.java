@@ -41,7 +41,7 @@ public class Reserve {
     public void setKey(Key key) {
         this.key = key;
     }
-    public String getId(String id) {
+    public String getId() {
         return id;
     }
 
