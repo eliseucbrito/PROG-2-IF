@@ -73,7 +73,7 @@ public class ReserveRepository implements ReserveInterface {
 
             switch (infoChange) {
                 case "Teacher": // implementar o nome do professor quando tiver feito
-                    System.out.println("Current teacher"+ r.getTeacher());
+                    System.out.println("Current teacher"+ r.getTeacher().getName());
                     System.out.println("New teacher: ");
 
                     break;
