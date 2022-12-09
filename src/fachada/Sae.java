@@ -1,48 +1,48 @@
-package negocio;
+package fachada;
 
 import dados.Reserve;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.ReserveNotExistsException;
 import excecao.ReserveNotFoundedException;
-import repositorio.ReserveInterface;
-import repositorio.ReserveRepository;
+import negocio.ReserveRegister;
 
-public class ReserveRegister implements ReserveInterface {
+public class Sae implements SaeInterface {
 
-    private ReserveRepository reserveRepository;
+    private ReserveRegister reserveRegister;
 
-    public ReserveRegister() {
-        this.reserveRepository = new ReserveRepository();
+    public Sae() {
+        this.reserveRegister = new ReserveRegister();
     }
+
 
     @Override
     public void registerReservation(Reserve re) throws FullVectorException {
-        this.reserveRepository.registerReservation(re);
+        this.reserveRegister.registerReservation(re);
     }
 
     @Override
     public void removeReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
-        this.reserveRepository.removeReserve(id);
+        this.reserveRegister.removeReserve(id);
     }
 
-    @Override // juntar todos os repositorios
+    @Override
     public void changeReserve(String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException {
-
+        this.reserveRegister.changeReserve(id, op, newValue);
     }
 
     @Override
     public Reserve consultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
-        return this.reserveRepository.consultReserve(id);
+        return this.reserveRegister.consultReserve(id);
     }
 
     @Override
     public void updateReserve(Reserve re) throws EmptyVectorException, ReserveNotFoundedException {
-        this.reserveRepository.updateReserve(re);
+        this.reserveRegister.updateReserve(re);
     }
 
     @Override
-    public Reserve[] list() {
-        return this.reserveRepository.list();
+    public Reserve[] listReserves() {
+        return this.reserveRegister.list();
     }
 }

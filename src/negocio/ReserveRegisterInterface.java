@@ -10,6 +10,8 @@ public interface ReserveRegisterInterface {
     public void registerReservation (Reserve re) throws FullVectorException;
     public void removeReserve (String id) throws ReserveNotFoundedException, EmptyVectorException;
     public void changeReserve (String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException;
-    public Reserve ConsultReserve (String id) throws ReserveNotFoundedException, EmptyVectorException;
-    public Reserve[] list();
+    public Reserve consultReserve (String id) throws ReserveNotFoundedException, EmptyVectorException;
+    public void updateReserve (Reserve re) throws EmptyVectorException, ReserveNotFoundedException;
+
+    public Reserve[] listReserves();
 }

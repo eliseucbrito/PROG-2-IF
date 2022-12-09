@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI up to case 3">
-      <change afterPath="$PROJECT_DIR$/src/negocio/ReserveRegisterInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fachada/Sae.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fachada/SaeInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/negocio/RegisterReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dados/Reserve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Reserve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fachada/ReserveKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegisterInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegisterInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
     </list>
@@ -117,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670551450915</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="GUI up to case 3">
+      <created>1670623516844</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670623516844</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -3,6 +3,8 @@ package gui;
 import dados.Reserve;
 import dados.Teacher;
 import excecao.FullVectorException;
+import fachada.Sae;
+
 import java.util.Date;
 import java.util.Date;
 import java.util.Scanner;
@@ -14,9 +16,10 @@ public class app {
         Scanner input = new Scanner(System.in);
         int index, op, indexFound;
         boolean found;
-        String newValue, name, goal, soli_hour, devol_hour, id;
+        String newValue, name, goal, soliHour, devolHour, id, key;
         Reserve re = new Reserve();
         Teacher tea = new Teacher();
+        Sae sae = new Sae();
 
         do {
             System.out.println("0 - Exit");
@@ -41,40 +44,44 @@ public class app {
             System.out.println("15 - List (Reservation)");
             System.out.println("Enter your option: ");
             op = input.nextInt();
-
+            input.nextLine();
             switch (op) {
                 case 0:
-                    System.out.println("See you later");
+                    System.out.println("Saindo...");
                     break;
                 case 1:
                     try { // Quem tá responsavel pelo TEACHER, muda isso aqui, fiz só pra testar
-                        System.out.println("Teacher name: ");
+                        System.out.println("Nome do professor: ");
                         name = input.nextLine();
                         tea = new Teacher(name);
-                        System.out.println("Operation successful");
+                        System.out.println("Operação realizada com sucesso");
                     } catch (Exception e) {
-                        System.out.println("Full vector ERROR:" + e.getMessage());
+                        System.out.println("ERROR Vetor cheio :" + e.getMessage());
                     }
                 case 2:
                     // register key
                     break;
                 case 3:
                     try {
-                        System.out.println("Teacher name: ");
-                        name = input.nextLine();
-                        System.out.println("Goal: ");
-                        goal = input.nextLine();
-                        System.out.println("Solicitation hour: ");
-                        soli_hour = input.nextLine();
-                        System.out.println("Devolution hour: ");
-                        devol_hour = input.nextLine();
-                        id = String.valueOf(new Date().getTime()); // hour in miliseconds
-                        tea = new Teacher(name);
-                        re = new Reserve(tea, goal, soli_hour, devol_hour, id);
-                        // fazer consulta nos professores, para achar qual o novo com base no nome ou SIAPE
-
+                        System.out.println("--------------------");
+                        System.out.println("Nome do professor: ");
+                        name = input.next();
+                        System.out.println("Numero da chave: ");
+                        key = input.next();
+                        System.out.println("Atividade: ");
+                        goal = input.next();
+                        System.out.println("Hora de solicitação: ");
+                        soliHour = input.next();
+                        System.out.println("Hora de devolução: ");
+                        devolHour = input.next();
+                        System.out.println("ID: ");
+                        id = input.next(); // hour in miliseconds
+//                        tea = new Teacher(name);
+                        System.out.println("NOME: "+name+"CHAVE: "+key+"ATIVIDADE: "+goal+" "+soliHour+devolHour+id);
+                        re = new Reserve(name, key, goal, soliHour, devolHour, id);
+                        sae.registerReservation(re);
                     } catch (Exception e) {
-                        System.out.println("ERROR" + e.getMessage());
+                        System.out.println("ERROR: " + e.getMessage());
                     }
                     break;
                 case 4:
@@ -84,7 +91,7 @@ public class app {
                     // remove key
                     break;
                 case 6:
-                    // remove reservation
+                    System.out.println("Digite o ID da reserva que ");
                     break;
                 case 7:
                     // change teacher
@@ -103,6 +110,8 @@ public class app {
                     break;
                 case 12:
                     // consult reservation
+                    System.out.println("Digite o ID da reserve que deseja consultar: ");
+
                     break;
                 case 13:
                     break;

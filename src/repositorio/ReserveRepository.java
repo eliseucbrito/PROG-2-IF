@@ -12,7 +12,7 @@ public class ReserveRepository implements ReserveInterface {
     private Reserve[] reserve;
     private int index;
 
-    public ReserveRepository(Reserve[] reserve) {
+    public ReserveRepository() {
         this.reserve = new Reserve[MAX];
         this.index = -1;
     }
@@ -99,7 +99,7 @@ public class ReserveRepository implements ReserveInterface {
     }
 
     @Override
-    public Reserve ConsultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
+    public Reserve consultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
         Reserve re = null;
         if (this.index > 0) {
             boolean found = false;
@@ -120,6 +120,12 @@ public class ReserveRepository implements ReserveInterface {
             throw new EmptyVectorException();
         }
         return re;
+    }
+
+    @Override
+    public void updateReserve(Reserve re) throws EmptyVectorException, ReserveNotFoundedException {
+        Reserve reOld = this.consultReserve(re.getId());
+        reOld = re;
     }
 
     @Override
