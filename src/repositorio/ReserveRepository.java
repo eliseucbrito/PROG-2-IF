@@ -21,7 +21,7 @@ public class ReserveRepository implements ReserveInterface {
     public void registerReservation(Reserve re) throws FullVectorException {
         this.index = this.index + 1;
         if (this.index < MAX) {
-            reserve[index] = re;
+            reserve[this.index] = re;
         } else {
             throw new FullVectorException();
         };
@@ -101,10 +101,11 @@ public class ReserveRepository implements ReserveInterface {
     @Override
     public Reserve consultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
         Reserve re = null;
-        if (this.index > 0) {
+        System.out.println("INDEX "+this.index);
+        if (this.index >= 0) {
             boolean found = false;
             int indexFound = 0;
-            for (int i = 0; i < this.index; i++) {
+            for (int i = 0; i < this.index; i++) { // erro de consulta, não tá encontrando
                 if (id.equals((this.reserve[i].getId()))) {
                     found = true;
                     indexFound = i;
