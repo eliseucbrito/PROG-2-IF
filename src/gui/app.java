@@ -2,7 +2,9 @@ package gui;
 
 import dados.Reserve;
 import dados.Teacher;
+import excecao.EmptyVectorException;
 import excecao.FullVectorException;
+import excecao.ReserveNotFoundedException;
 import fachada.Sae;
 
 import java.util.Date;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class app {
 
     private static final int MAX = 100;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EmptyVectorException, ReserveNotFoundedException {
         Scanner input = new Scanner(System.in);
         int index, op, indexFound;
         boolean found;
@@ -79,6 +81,7 @@ public class app {
 //                        tea = new Teacher(name);
                         System.out.println("NOME: "+name+"CHAVE: "+key+"ATIVIDADE: "+goal+" "+soliHour+devolHour+id);
                         re = new Reserve(name, key, goal, soliHour, devolHour, id);
+                        System.out.println("RESERVA"+re);
                         sae.registerReservation(re);
                     } catch (Exception e) {
                         System.out.println("ERROR: " + e.getMessage());
@@ -110,8 +113,21 @@ public class app {
                     break;
                 case 12:
                     // consult reservation
-                    System.out.println("Digite o ID da reserve que deseja consultar: ");
-
+                    try {
+                        System.out.println("Digite o ID da reserve que deseja consultar: ");
+                        id = input.next();
+                        re = sae.consultReserve(id);
+                        System.out.println("+++++++++++++++++++++++++++++++");
+                        System.out.println("ID: "+re.getId());
+                        System.out.println("Professor: "+re.getTeacher());
+                        System.out.println("Atividade: "+re.getActivity());
+                        System.out.println("Chave: "+re.getKey());
+                        System.out.println("Hora de solicitação: "+re.getSolicitation_hour());
+                        System.out.println("Hora de devolução: "+re.getDevolution_hour());
+                        System.out.println("+++++++++++++++++++++++++++++++");
+                    } catch (Exception e) {
+                        System.out.println("ERROR: " + e.getMessage());
+                    }
                     break;
                 case 13:
                     break;
