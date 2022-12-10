@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="Error: Não tá encontrando a reserva na consulta">
+    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="Consult reserves method done.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fachada/Sae.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/Sae.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fachada/SaeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/SaeInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670630331380</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Consult reserves method done.">
+      <created>1670630825829</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670630825829</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,7 +176,8 @@
     <MESSAGE value="GUI up to case 3" />
     <MESSAGE value="Fachada my part done." />
     <MESSAGE value="Error: Não tá encontrando a reserva na consulta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error: Não tá encontrando a reserva na consulta" />
+    <MESSAGE value="Consult reserves method done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Consult reserves method done." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PROG_2$app.ic" NAME="app Coverage Results" MODIFIED="1670549296171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

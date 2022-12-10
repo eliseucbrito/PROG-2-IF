@@ -29,7 +29,7 @@ public class ReserveRepository implements ReserveInterface {
 
     @Override
     public void removeReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
-        if (this.index > 0) {
+        if (this.index >= 0) {
             boolean found = false;
             int indexFound = 0;
             for (int i = 0; i <= this.index; i++) {
@@ -101,7 +101,6 @@ public class ReserveRepository implements ReserveInterface {
     @Override
     public Reserve consultReserve(String id) throws ReserveNotFoundedException, EmptyVectorException {
         Reserve re = null;
-        System.out.println("INDEX "+this.index);
         if (this.index >= 0) {
             boolean found = false;
             int indexFound = 0;
@@ -130,13 +129,15 @@ public class ReserveRepository implements ReserveInterface {
     }
 
     @Override
-    public Reserve[] list() {
+    public Reserve[] list() throws EmptyVectorException {
         Reserve reList[] = null; // creating a new vector of reserves
         if (this.index >= 0) {
             reList = new Reserve[this.index+1];
-            for (int i = 0; i < this.index; i++) {
+            for (int i = 0; i <= this.index; i++) { // perguntar sobre o index a ricardo
                 reList[i] = this.reserve[i];
             }
+        } else {
+            throw new EmptyVectorException();
         }
         return reList;
     }

@@ -12,5 +12,5 @@ public interface SaeInterface {
     public void changeReserve (String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException;
     public Reserve consultReserve (String id) throws ReserveNotFoundedException, EmptyVectorException;
     public void updateReserve (Reserve re) throws EmptyVectorException, ReserveNotFoundedException;
-    public Reserve[] listReserves();
+    public Reserve[] listReserves() throws EmptyVectorException;
 }

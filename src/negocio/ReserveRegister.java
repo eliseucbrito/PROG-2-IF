@@ -42,7 +42,7 @@ public class ReserveRegister implements ReserveInterface {
     }
 
     @Override
-    public Reserve[] list() {
+    public Reserve[] list() throws EmptyVectorException {
         return this.reserveRepository.list();
     }
 }
