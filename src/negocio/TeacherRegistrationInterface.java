@@ -1,11 +1,9 @@
-package repositorio;
-
+package negocio;
 import dados.Teacher;
 import excecao.EmptyVectorException;
-import excecao.FullVectorException;
 import excecao.TeacherNotFoundException;
-
-public interface TeacherInterface {
+import excecao.FullVectorException;
+public interface TeacherRegistrationInterface {
     public void insert(Teacher t) throws FullVectorException;
     public Teacher consult (String Siap) throws TeacherNotFoundException, EmptyVectorException;
     public void remove (String Siap) throws TeacherNotFoundException, EmptyVectorException;
