@@ -105,7 +105,7 @@ public class ReserveRepository implements ReserveInterface {
         if (this.index >= 0) {
             boolean found = false;
             int indexFound = 0;
-            for (int i = 0; i < this.index; i++) { // erro de consulta, não tá encontrando
+            for (int i = 0; i <= this.index; i++) { // erro de consulta, não tá encontrando
                 if (id.equals((this.reserve[i].getId()))) {
                     found = true;
                     indexFound = i;

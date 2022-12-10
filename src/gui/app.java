@@ -117,6 +117,14 @@ public class app {
                         System.out.println("Digite o ID da reserve que deseja consultar: ");
                         id = input.next();
                         re = sae.consultReserve(id);
+                        System.out.println("+++++++++++++++++++++++++++++++");
+                        System.out.println("ID: "+re.getId());
+                        System.out.println("Professor: "+re.getTeacher());
+                        System.out.println("Atividade: "+re.getActivity());
+                        System.out.println("Chave: "+re.getKey());
+                        System.out.println("Hora de solicitação: "+re.getSolicitation_hour());
+                        System.out.println("Hora de devolução: "+re.getDevolution_hour());
+                        System.out.println("+++++++++++++++++++++++++++++++");
                     } catch (Exception e) {
                         System.out.println("ERROR: " + e.getMessage());
                     }
