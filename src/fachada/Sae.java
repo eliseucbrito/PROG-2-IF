@@ -42,7 +42,7 @@ public class Sae implements SaeInterface {
     }
 
     @Override
-    public Reserve[] listReserves() {
+    public Reserve[] listReserves() throws EmptyVectorException {
         return this.reserveRegister.list();
     }
 }

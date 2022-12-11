@@ -14,5 +14,5 @@ public interface ReserveInterface {
     public Reserve consultReserve (String id) throws ReserveNotFoundedException, EmptyVectorException;
     public void updateReserve (Reserve re) throws EmptyVectorException, ReserveNotFoundedException;
 
-    public Reserve[] list();
+    public Reserve[] list() throws EmptyVectorException;
 }
