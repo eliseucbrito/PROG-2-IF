@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="Consult reserves method done.">
+    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI reserve done + green menu">
+      <change afterPath="$PROJECT_DIR$/src/gui/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fachada/Sae.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/Sae.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fachada/SaeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/SaeInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +19,7 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -154,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670630825829</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="GUI reserve done + green menu">
+      <created>1670714627559</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670714627559</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,7 +181,8 @@
     <MESSAGE value="Fachada my part done." />
     <MESSAGE value="Error: Não tá encontrando a reserva na consulta" />
     <MESSAGE value="Consult reserves method done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Consult reserves method done." />
+    <MESSAGE value="GUI reserve done + green menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI reserve done + green menu" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PROG_2$app.ic" NAME="app Coverage Results" MODIFIED="1670549296171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
