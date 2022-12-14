@@ -3,18 +3,20 @@ package dados;
 public class Teacher {
     private String name;
     private String Siap;
-    private int age;
+
+    private int NivelAcess;
 
     public Teacher(){
         this.name = "";
-        this.age = 0;
         this.Siap ="";
+        this.NivelAcess = 0;
 
     }
-    public Teacher(String name,String Siap,int age) {
+    public Teacher(String name,String Siap,int NivelAcess) {
         this.name = name;
         this.Siap = Siap;
-        this.age = age;
+        this.NivelAcess = NivelAcess;
+
     }
 
     public String getName() {
@@ -32,12 +34,17 @@ public class Teacher {
     public void setSiap(String siap) {
         Siap = siap;
     }
-
-    public int getAge() {
-        return age;
+    public int getNivelAcess(){
+        return NivelAcess;
+    }
+    public void NivelAcess(int NivelAcess){
+        this.NivelAcess = NivelAcess;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+public void change (String name, String Siap,int NivelAcess){
+        this.name = name;
+        this.Siap = Siap;
+        this.NivelAcess = NivelAcess;
+}
+
 }
