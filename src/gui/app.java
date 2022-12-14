@@ -5,7 +5,9 @@ import dados.Teacher;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.ReserveNotFoundedException;
+import excecao.TeacherNotFoundException;
 import fachada.Sae;
+import negocio.TeacherRegistration;
 
 import java.util.Scanner;
 public class app {
@@ -14,16 +16,19 @@ public class app {
     private static final int MAX = 100;
     public static void main(String[] args) throws EmptyVectorException, ReserveNotFoundedException {
         Scanner input = new Scanner(System.in);
-        int index, op, indexFound;
+        int index, op, indexFound,NivelAcess;
         boolean found;
-        String newValue, name, goal, soliHour, devolHour, id, key;
+        String newValue, name, goal, soliHour, devolHour, id, key,Siap;
         Reserve re = new Reserve();
-        Teacher tea = new Teacher();
+        TeacherRegistration tea = new TeacherRegistration();
+        Teacher te;
         Sae sae = new Sae();
+        Teacher teachers[];
         Reserve res[]; // for list reserves
 
         do {
             System.out.print(Color.GREEN_BOLD);
+            System.out.println("================================");
             System.out.println("0 - Exit");
             System.out.println("1 - Register (Teacher)");
             System.out.println("2 - Register (Key)");
@@ -54,13 +59,17 @@ public class app {
                     System.out.println("Saindo...");
                     break;
                 case 1:
-                    try { // Quem tá responsavel pelo TEACHER, muda isso aqui, fiz só pra testar
-                        System.out.println("Nome do professor: ");
-                        name = input.nextLine();
-                        tea = new Teacher(name);
-                        System.out.println(Color.GREEN_BACKGROUND+"Operação realizada com sucesso"+Color.RESET);
-                    } catch (Exception e) {
-                        System.out.println(Color.RED_BACKGROUND+"ERROR Vetor cheio :" + e.getMessage()+Color.RESET);
+                    try {
+                        System.out.print("Digite o Nome do professor: ");
+                        name = input.next();
+                        System.out.print("Digite o Siap: ");
+                        Siap = input.next();
+                        System.out.print("Digite o Nivel de Acesso: ");
+                        NivelAcess = input.nextInt();
+                        te = new Teacher(name,Siap,NivelAcess);
+                        tea.insert(te);
+                    } catch (FullVectorException msg) {
+                        System.out.println(msg.getMessage());
                     }
                 case 2:
                     // register key
@@ -111,7 +120,21 @@ public class app {
                     }
                     break;
                 case 7:
-                    // change teacher
+                   try{
+                       System.out.println("Digite o Siap: ");
+                       Siap = input.next();
+                       System.out.println("Alterar nome: ");
+                       name = input.next();
+                       System.out.println("Alterar Siap: ");
+                       Siap = input.next();
+                       System.out.println("Alterar Nivel de Acesso: ");
+                       NivelAcess = input.nextInt();
+                      tea.change(name,Siap,NivelAcess);
+
+                   }catch( TeacherNotFoundException| EmptyVectorException msg){
+                    System.out.println(msg.getMessage());
+
+                   }
                     break;
                 case 8:
                     // change key
@@ -120,7 +143,19 @@ public class app {
                     // change reservation
                     break;
                 case 10:
-                    // consult teacher
+                    try{
+                        System.out.println("=================================");
+                        System.out.println("Siap: ");
+                        Siap = input.next();
+                        te = tea.consult(Siap);
+                        System.out.println("Nome do professor: "+te.getName());
+                        System.out.println("Siap: "+te.getSiap());
+                        System.out.println("Nivel de acesso"+te.getNivelAcess());
+
+
+                    } catch (TeacherNotFoundException |EmptyVectorException msg) {
+                        System.out.println(msg.getMessage());
+                    }
                     break;
                 case 11:
                     // consult key
@@ -146,6 +181,15 @@ public class app {
                     }
                     break;
                 case 13:
+
+                        teachers = tea.list();
+                        for(int i =0;i<teachers.length; i=i=1+1) {
+                            System.out.println("Nome do professor: " + teachers[i].getName());
+                            System.out.println("Siap: " + teachers[i].getName());
+                            System.out.println("Nivel de Acesso: "+teachers[i].getNivelAcess());
+                        }
+
+
                     break;
                 case 14:
                     break;

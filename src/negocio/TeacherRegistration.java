@@ -4,16 +4,19 @@ import dados.Teacher;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.TeacherNotFoundException;
+import repositorio.TeacherRepository;
 
 public class TeacherRegistration implements TeacherRegistrationInterface {
 
-private TeacherRepository teacherRepository;
-public TeacherRegistration(){
-    this.teacherRepository = new TeacherRepository();
-}
+    private TeacherRepository teacherRepository;
+
+    public TeacherRegistration() {
+        this.teacherRepository = new TeacherRepository();
+    }
+
     @Override
     public void insert(Teacher t) throws FullVectorException {
-    this.teacherRepository.insert(t);
+        this.teacherRepository.insert(t);
 
     }
 
@@ -24,17 +27,23 @@ public TeacherRegistration(){
 
     @Override
     public void remove(String Siap) throws TeacherNotFoundException, EmptyVectorException {
-    this.teacherRepository.remove(Siap);
+        this.teacherRepository.remove(Siap);
 
     }
 
     @Override
-    public void change(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
-    this.teacherRepository.change(t);
+    public void change(String name, String Siap, int NivelAcess) throws EmptyVectorException, TeacherNotFoundException {
+        Teacher te = this.teacherRepository.consult(Siap);
+        te.change(name, Siap, NivelAcess);
+        this.teacherRepository.update(te);
     }
 
     @Override
     public Teacher[] list() throws EmptyVectorException {
         return this.teacherRepository.list();
+    }
+
+    public void update(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
+        this.teacherRepository.update(t);
     }
 }

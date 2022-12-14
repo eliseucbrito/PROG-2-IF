@@ -6,7 +6,7 @@ import excecao.FullVectorException;
 import excecao.TeacherNotFoundException;
 import dados.Teacher;
 public class TeacherRepository implements TeacherInterface{
-    private static final int MAX = 100;
+    private static final int MAX = 10;
     private Teacher[] Teachers;
     private int index;
 
@@ -41,6 +41,7 @@ public class TeacherRepository implements TeacherInterface{
             }
             if(find == true){
                 te = this.Teachers[indexfind];
+
             }else{
                 throw new TeacherNotFoundException();
             }
@@ -74,11 +75,10 @@ public class TeacherRepository implements TeacherInterface{
         }else{
             throw new EmptyVectorException();
         }
-
     }
 
     @Override
-    public void change(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
+    public void update(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
         Teacher t_old = this.consult(t.getSiap());
         t_old = t;
 
