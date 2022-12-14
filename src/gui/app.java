@@ -12,19 +12,43 @@ import negocio.TeacherRegistration;
 import java.util.Scanner;
 public class app {
 
+    // presets
+    static String tableFormatReserve = "%-8s %-15s %-10s %-8s %-10s %-8s%n";
+    static String tableFormatTeacher = "%-10s %-15s %-12s %-8s %n";
+    static String tableFormatKey = "%-8s %-15s %n";
+
+    static String enterID= Color.GREEN_BOLD+"Digite o ID: "+Color.RESET;
+    static String enterSIAPE= Color.GREEN_BOLD+"Digite o SIAPE: "+Color.RESET;
+    static String enterKey= Color.GREEN_BOLD+"Digite o número da chave: "+Color.RESET;
+
+    // color + background
+    static String successOp = Color.GREEN_BACKGROUND+"Operação realizada com sucesso"+Color.RESET;
+    static String failedOp = Color.RED_BACKGROUND+"ERROR: " +Color.RESET;
+    static String invalidOp = Color.RED_BACKGROUND+"Invalid option!"+Color.RESET;
+
     // max teachers, keys and reserves.
     private static final int MAX = 100;
-    public static void main(String[] args) throws EmptyVectorException, ReserveNotFoundedException {
+    public static void main(String[] args) throws EmptyVectorException, ReserveNotFoundedException, FullVectorException {
         Scanner input = new Scanner(System.in);
-        int index, op, indexFound,NivelAcess;
+        int index, op, indexFound, num;
         boolean found;
-        String newValue, name, goal, soliHour, devolHour, id, key,Siap;
+        String newValue, name, goal, soliHour, devolHour, id, key, siape, age, acessLvl, room;
         Reserve re = new Reserve();
         TeacherRegistration tea = new TeacherRegistration();
         Teacher te;
         Sae sae = new Sae();
         Teacher teachers[];
         Reserve res[]; // for list reserves
+
+        // register previous done
+        Reserve reEliseu = new Reserve(
+                "Eliseu Brito",
+                "237",
+                "Aula Prog",
+                "13:00",
+                "15:00",
+                "462");
+        sae.registerReservation(reEliseu);
 
         do {
             System.out.print(Color.GREEN_BOLD);
@@ -50,13 +74,13 @@ public class app {
             System.out.println("14 - List (Key)");
             System.out.println("15 - List (Reservation)");
             System.out.print(Color.RESET);
-            System.out.print("Enter your option: ");
+            System.out.print(Color.BLUE_BOLD+"Enter your option: "+Color.RESET);
             op = input.nextInt();
             input.nextLine();
 
             switch (op) {
                 case 0:
-                    System.out.println("Saindo...");
+                    System.out.println(Color.WHITE_BOLD+"Saindo...");
                     break;
                 case 1:
                     try {
@@ -71,8 +95,14 @@ public class app {
                     } catch (FullVectorException msg) {
                         System.out.println(msg.getMessage());
                     }
+                   break;
                 case 2:
-                    // register key
+                    // register
+                    System.out.print("Número: ");
+                    num = input.nextInt();
+                    System.out.print("Sala de acesso: ");
+                    room = input.nextLine();
+                    System.out.println(Color.WHITE_BOLD+successOp);
                     break;
                 case 3:
                     try {
@@ -88,35 +118,56 @@ public class app {
                         System.out.print("Hora de devolução: ");
                         devolHour = input.nextLine();
                         System.out.print("ID: ");
-                        id = input.nextLine(); // hour in miliseconds
+                        id = input.nextLine();
 //                        tea = new Teacher(name);
                         re = new Reserve(name, key, goal, soliHour, devolHour, id);
                         sae.registerReservation(re);
 
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.GREEN_BACKGROUND+"Operação realizada com sucesso"+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.RED_BACKGROUND+"ERROR: " + e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
                     }
                     break;
                 case 4:
-                    // remove teacher
+                    try {
+                        System.out.printf("---------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                          "        REMOVER PROFESSOR        %n"+Color.RESET);
+                        System.out.printf("---------------------------------%n");
+                        System.out.print(enterSIAPE);
+                        siape = input.nextLine();
+                        // REMOVER PROFESSOR
+                        System.out.println(Color.WHITE_BOLD+successOp);
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 5:
-                    // remove key
+                    try {
+                        System.out.printf("---------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                          "           REMOVER CHAVE          %n"+Color.RESET);
+                        System.out.printf("---------------------------------%n");
+                        System.out.print(enterKey);
+                        key = input.nextLine();
+                        // REMOVER CHAVE
+
+                        System.out.println(Color.WHITE_BOLD+successOp);
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 6:
                     try {
-                        System.out.println("===== REMOVER RESERVA =====");
-                        System.out.print("Digite o ID: ");
+                        System.out.printf("--------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+"         REMOVER RESERVA        %n"+Color.RESET);
+                        System.out.printf("--------------------------------%n");
+                        System.out.print(enterID);
                         id = input.nextLine();
                         sae.removeReserve(id);
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.GREEN_BACKGROUND+"Operação realizada com sucesso"+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.RED_BACKGROUND+"ERROR: "+e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
                     }
                     break;
                 case 7:
@@ -155,67 +206,136 @@ public class app {
 
                     } catch (TeacherNotFoundException |EmptyVectorException msg) {
                         System.out.println(msg.getMessage());
+                    try {
+                        System.out.printf("---------------------------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                          "                CONSULTAR PROFESSOR                %n"+Color.RESET);
+                        System.out.printf("---------------------------------------------------%n");
+                        System.out.print(enterSIAPE);
+                        siape = input.next();
+                        re = sae.consultReserve(siape);
+                        // metodo de consulta
+                        System.out.printf("---------------------------------------------------%n");
+                        System.out.printf(tableFormatTeacher, "SIAPE", "PROFESSOR", "NVL. ACESSO", "IDADE");
+                        System.out.printf("---------------------------------------------------%n");
+                        System.out.print(Color.CYAN);
+                        System.out.printf(tableFormatTeacher,
+                                re.getId(),  re.getTeacher(), re.getActivity(), re.getKey() /*metodos get*/);
+                        System.out.printf("---------------------------------------------------%n");
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
                     }
                     break;
                 case 11:
-                    // consult key
+                    try {
+                        System.out.printf("-----------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                          "    CONSULTAR CHAVE    %n"+Color.RESET);
+                        System.out.printf("-----------------------%n");
+                        System.out.print(enterKey);
+                        key = input.next();
+                        re = sae.consultReserve(key);
+                        // metodo de consulta
+                        System.out.printf("-----------------------%n");
+                        System.out.printf(tableFormatKey, "NUMERO", "SALA DE ACESSO");
+                        System.out.printf("-----------------------%n");
+                        System.out.print(Color.CYAN);
+                        System.out.printf(tableFormatKey,
+                                re.getId(),  re.getActivity() /*metodos get*/+Color.RESET);
+                        System.out.printf("-----------------------%n");
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 12:
                     // consult reservation
                     try {
-                        System.out.println("===== CONSULTAR RESERVA =====");
-                        System.out.println("Digite o ID: ");
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                "                        CONSULTAR RESERVA                        %n"+Color.RESET);
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.print(enterID);
                         id = input.next();
                         re = sae.consultReserve(id);
-                        System.out.println("+++++++++++++++++++++++++++++++");
-                        System.out.println("ID: "+re.getId());
-                        System.out.println("Professor: "+re.getTeacher());
-                        System.out.println("Atividade: "+re.getActivity());
-                        System.out.println("Chave: "+re.getKey());
-                        System.out.println("Hora de solicitação: "+re.getSolicitation_hour());
-                        System.out.println("Hora de devolução: "+re.getDevolution_hour());
-                        System.out.println("+++++++++++++++++++++++++++++++");
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.printf(tableFormatReserve, "ID", "PROFESSOR", "ATIVIDADE", "CHAVE", "H. SOLIC", "H. DEVOL");
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.print(Color.CYAN);
+                        System.out.printf(tableFormatReserve,
+                                re.getId(),  re.getTeacher(), re.getActivity(), re.getKey(),
+                                re.getSolicitation_hour(), re.getDevolution_hour()+Color.RESET);
+                        System.out.printf("----------------------------------------------------------------%n");
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.RED_BACKGROUND+"ERROR: " + e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
                     }
                     break;
                 case 13:
-
                         teachers = tea.list();
                         for(int i =0;i<teachers.length; i=i=1+1) {
                             System.out.println("Nome do professor: " + teachers[i].getName());
                             System.out.println("Siap: " + teachers[i].getName());
                             System.out.println("Nivel de Acesso: "+teachers[i].getNivelAcess());
                         }
-
-
+                    try {
+                        res = sae.listReserves();
+                        System.out.printf("---------------------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                "                LISTAR PROFESSORES                %n"+Color.RESET);
+                        System.out.printf("---------------------------------------------%n");
+                        System.out.printf(tableFormatTeacher, "SIAPE", "PROFESSOR", "NVL. ACESSO", "IDADE");
+                        System.out.printf("---------------------------------------------%n");
+                        for (int i = 0; i < res.length; i++) {
+                            System.out.print(Color.CYAN);
+                            System.out.printf(tableFormatTeacher,
+                                    res[i].getId(),  res[i].getTeacher(), res[i].getActivity(), res[i].getKey()
+                                    /*metodos get*/);
+                        }
+                        System.out.printf("---------------------------------------------%n");
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 14:
+                    try {
+                        res = sae.listReserves();
+                        System.out.printf("-----------------------%n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                          "     LISTAR CHAVES     %n"+Color.RESET);
+                        System.out.printf("-----------------------%n");
+                        System.out.printf(tableFormatKey, "NUMERO", "SALA DE ACESSO");
+                        System.out.printf("-----------------------%n");
+                        for (int i = 0; i < res.length; i++) {
+                            System.out.print(Color.CYAN);
+                            System.out.printf(tableFormatKey,
+                                    res[i].getId(),  res[i].getActivity() /*metodos get*/+Color.RESET);
+                        }
+                        System.out.printf("-----------------------%n");
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 15:
                     try {
                         res = sae.listReserves();
-
                         System.out.printf("----------------------------------------------------------------%n");
-                        System.out.printf("                         LISTAR RESERVAS                        %n");
+                        System.out.printf(Color.GREEN_BOLD+
+                                "                         LISTAR RESERVAS                        %n"+Color.RESET);
                         System.out.printf("----------------------------------------------------------------%n");
-                        System.out.printf("| %-4s | %-10s | %-10s | %4s | %4s | %4s |%n",
-                                "ID", "PROFESSOR", "ATIVIDADE", "CHAVE", "H. SOLIC", "H. DEVOL");
+                        System.out.printf(tableFormatReserve, "ID", "PROFESSOR", "ATIVIDADE", "CHAVE", "H. SOLIC", "H. DEVOL");
                         System.out.printf("----------------------------------------------------------------%n");
                         for (int i = 0; i < res.length; i++) {
-                            System.out.printf("| %-4s | %-10s | %-10s | %5s | %6s | %6s |%n",
+                            System.out.print(Color.CYAN);
+                            System.out.printf(tableFormatReserve,
                                     res[i].getId(),  res[i].getTeacher(), res[i].getActivity(), res[i].getKey(),
-                                    res[i].getSolicitation_hour(), res[i].getDevolution_hour());
+                                    res[i].getSolicitation_hour(), res[i].getDevolution_hour()+Color.RESET);
                         }
                         System.out.printf("----------------------------------------------------------------%n");
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD);
-                        System.out.println(Color.RED_BACKGROUND+"ERROR: "+e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
                     }
                     break;
                 default:
-                    System.out.println("Invalid option!");
+                    System.out.println(Color.WHITE_BOLD+invalidOp);
             }
         } while (op != 0);
     }
