@@ -3,7 +3,6 @@ package dados;
 public class Teacher {
     private String name;
     private String Siap;
-
     private int NivelAcess;
 
     public Teacher(){

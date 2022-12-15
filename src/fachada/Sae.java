@@ -1,10 +1,7 @@
 package fachada;
 
 import dados.Reserve;
-import excecao.EmptyVectorException;
-import excecao.FullVectorException;
-import excecao.ReserveNotExistsException;
-import excecao.ReserveNotFoundedException;
+import excecao.*;
 import negocio.ReserveRegister;
 
 public class Sae implements SaeInterface {
@@ -27,7 +24,7 @@ public class Sae implements SaeInterface {
     }
 
     @Override
-    public void changeReserve(String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException {
+    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException {
         this.reserveRegister.changeReserve(id, op, newValue);
     }
 

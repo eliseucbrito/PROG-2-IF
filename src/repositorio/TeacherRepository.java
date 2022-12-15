@@ -27,7 +27,7 @@ public class TeacherRepository implements TeacherInterface{
         }
     }
     @Override
-    public Teacher consult  (String Siap)throws TeacherNotFoundException,EmptyVectorException {
+    public Teacher consult (String Siap)throws TeacherNotFoundException,EmptyVectorException {
         Teacher te = null;
         if(this.index >=0){
             boolean find = false;
