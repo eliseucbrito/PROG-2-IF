@@ -2,7 +2,7 @@ package dados;
 
 public class Reserve {
     private Teacher teacher;
-    private String key;
+    private Key key;
     private String id;
     private String activity;
     private String solicitation_hour;
@@ -17,7 +17,7 @@ public class Reserve {
         this.id = "";
     }
 
-    public Reserve(Teacher teacher, String key, String activity, String solicitation_hour, String devolution_hour, String id) {
+    public Reserve(Teacher teacher, Key key, String activity, String solicitation_hour, String devolution_hour, String id) {
         this.teacher = teacher;
         this.key = key;
         this.activity = activity;
@@ -34,11 +34,11 @@ public class Reserve {
         this.teacher = teacher;
     }
 
-    public String getKey() {
+    public Key getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(Key key) {
         this.key = key;
     }
     public String getId() {

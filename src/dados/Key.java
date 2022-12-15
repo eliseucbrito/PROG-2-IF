@@ -9,8 +9,13 @@ public class Key {
 
     public Key(String name, String room) {
 
-        this.name = "name";
-        this.room = "room";
+        this.name = name;
+        this.room = room;
+    }
+
+    public Key() {
+        this.name = "";
+        this.room = "";
     }
 
     public String getName() {

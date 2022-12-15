@@ -3,15 +3,12 @@ package negocio;
 import dados.Reserve;
 import dados.Teacher;
 import excecao.*;
-import fachada.SaeTeacher;
 import repositorio.ReserveInterface;
 import repositorio.ReserveRepository;
 
 public class ReserveRegister implements ReserveInterface {
 
     private ReserveRepository reserveRepository;
-
-    SaeTeacher saeTeacher = new SaeTeacher();
 
     public ReserveRegister() {
         this.reserveRepository = new ReserveRepository();
@@ -28,31 +25,31 @@ public class ReserveRegister implements ReserveInterface {
     }
 
     @Override
-    public Reserve changeReserve(String id, int op, String newValue) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException, FullVectorException {
+    public Reserve changeReserve(String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException, FullVectorException {
+        return null;
+    }
+
+    @Override
+    public Reserve changeReserve(String id, int op, String newValue, Teacher te) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException, FullVectorException {
         Reserve reChange = this.reserveRepository.consultReserve(id);
 
 
         switch (op) {
             case 1: // Teacher
                 reChange = this.reserveRepository.consultReserve(id);
-                System.out.println("NEGOCIO"+saeTeacher);
-                Teacher te = saeTeacher.consultTeacher(newValue);
-
-                System.out.println(reChange.getId());
-                System.out.println(reChange.getTeacher());
-                System.out.println(te.getSiap());
-                System.out.println(te.getName());
-                this.reserveRepository.registerReservation(reChange);
+                System.out.println("NEW ID "+reChange.getId());
+                System.out.println("NEW TEACHER "+reChange.getTeacher());
+                System.out.println("NEW SIAPE "+te.getSiap());
+                System.out.println("NEW TE NAME "+te.getName());
+                reChange.setTeacher(te);
                 break;
-            case 2:
-                break;
-            case 3: // goal
+            case 2: // goal
                 reChange.setActivity(newValue);
                 break;
-            case 4: // goal
+            case 3: // goal
                 reChange.setSolicitation_hour(newValue);
                 break;
-            case 5: // goal
+            case 4: // goal
                 reChange.setDevolution_hour(newValue);
                 break;
             default:

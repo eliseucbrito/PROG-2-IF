@@ -1,9 +1,11 @@
 package repositorio;
 
 import dados.Reserve;
+import dados.Teacher;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.ReserveNotFoundedException;
+import excecao.TeacherNotFoundException;
 
 public class ReserveRepository implements ReserveInterface {
 
@@ -75,6 +77,11 @@ public class ReserveRepository implements ReserveInterface {
             throw new EmptyVectorException();
         }
         return re;
+    }
+
+    @Override
+    public Reserve changeReserve(String id, int op, String newValue, Teacher te) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException, FullVectorException {
+        return null;
     }
 
     @Override

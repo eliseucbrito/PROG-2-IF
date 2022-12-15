@@ -3,7 +3,6 @@ import dados.Teacher;
 import dados.Reserve;
 import excecao.*;
 import negocio.ReserveRegister;
-import negocio.TeacherRegistration;
 import excecao.TeacherNotFoundException;
 
 public class Sae implements SaeInterface {
@@ -26,8 +25,13 @@ public class Sae implements SaeInterface {
     }
 
     @Override
-    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException, FullVectorException {
-        this.reserveRegister.changeReserve(id, op, newValue);
+    public void changeReserve(String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException, FullVectorException {
+
+    }
+
+    @Override
+    public void changeReserve(String id, int op, String newValue, Teacher te) throws EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException, FullVectorException, ReserveNotExistsException {
+        this.reserveRegister.changeReserve(id, op, newValue, te);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package gui;
 
+import dados.Key;
 import dados.Reserve;
 import dados.Teacher;
-import excecao.EmptyVectorException;
-import excecao.FullVectorException;
-import excecao.ReserveNotFoundedException;
-import excecao.TeacherNotFoundException;
+import excecao.*;
 import fachada.Sae;
+import fachada.SaeKey;
 import fachada.SaeTeacher;
 import negocio.TeacherRegistration;
 
@@ -34,14 +33,17 @@ public class app {
         Scanner input = new Scanner(System.in);
         int index, op, indexFound, num, NivelAcess;
         boolean found;
-        String newValue, name, goal, soliHour, devolHour, id, key, Siap, age, acessLvl, room;
+        String newValue, name, goal, keyNum, soliHour, devolHour, id, Siap, age, acessLvl, room;
         Reserve re = new Reserve();
         TeacherRegistration tea = new TeacherRegistration();
         Teacher te;
         Sae sae = new Sae();
         Teacher teachers[];
         Reserve res[]; // for list reserves
+        Key keys[];
         SaeTeacher saeTeacher = new SaeTeacher();
+        SaeKey saeKey = new SaeKey();
+        Key key = new Key();
 
         do {
             System.out.print(Color.GREEN_BOLD);
@@ -73,7 +75,7 @@ public class app {
 
             switch (op) {
                 case 0:
-                    System.out.println(Color.WHITE_BOLD+"Saindo...");
+                    System.out.println(Color.WHITE_BOLD + "Saindo...");
                     break;
                 case 1:
                     try {
@@ -83,19 +85,25 @@ public class app {
                         Siap = input.next();
                         System.out.print("Nivel de Acesso: ");
                         NivelAcess = input.nextInt();
-                        te = new Teacher(name,Siap,NivelAcess);
+                        te = new Teacher(name, Siap, NivelAcess);
                         saeTeacher.insertTeacher(te);
                     } catch (FullVectorException msg) {
                         System.out.println(msg.getMessage());
                     }
-                   break;
+                    break;
                 case 2:
-                    // register
-                    System.out.print("Número: ");
-                    num = input.nextInt();
-                    System.out.print("Sala de acesso: ");
-                    room = input.nextLine();
-                    System.out.println(Color.WHITE_BOLD+successOp);
+                    try {
+                        System.out.print("Nome da chave: ");
+                        name = input.nextLine();
+                        System.out.print("Sala de acesso: ");
+                        room = input.nextLine();
+                        key = new Key(name,room);
+                        saeKey.insertKey(key);
+                        System.out.println(Color.WHITE_BOLD+successOp);
+                        break;
+                    } catch (Exception e) {
+                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                    }
                     break;
                 case 3:
                     try {
@@ -103,7 +111,7 @@ public class app {
                         System.out.print("SIAPE do professor: ");
                         Siap = input.nextLine();
                         System.out.print("Numero da chave: ");
-                        key = input.nextLine();
+                        keyNum = input.nextLine();
                         System.out.print("Atividade: ");
                         goal = input.nextLine();
                         System.out.print("Hora de solicitação: ");
@@ -113,77 +121,93 @@ public class app {
                         System.out.print("ID: ");
                         id = input.nextLine();
                         te = saeTeacher.consultTeacher(Siap);
+                        key = saeKey.consultKey(keyNum);
                         re = new Reserve(te, key, goal, soliHour, devolHour, id);
                         sae.registerReservation(re);
-                        System.out.println(Color.WHITE_BOLD+successOp);
+                        System.out.println(Color.WHITE_BOLD + successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD + failedOp + e.getMessage() + Color.RESET);
                     }
                     break;
                 case 4:
                     try {
                         System.out.printf("---------------------------------%n");
-                        System.out.printf(Color.GREEN_BOLD+
-                                          "        REMOVER PROFESSOR        %n"+Color.RESET);
+                        System.out.printf(Color.GREEN_BOLD +
+                                "        REMOVER PROFESSOR        %n" + Color.RESET);
                         System.out.printf("---------------------------------%n");
                         System.out.print(enterSIAPE);
                         Siap = input.nextLine();
                         saeTeacher.removeTeacher(Siap);
-                        System.out.println(Color.WHITE_BOLD+successOp);
+                        System.out.println(Color.WHITE_BOLD + successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD + failedOp + e.getMessage() + Color.RESET);
                     }
                     break;
                 case 5:
                     try {
                         System.out.printf("---------------------------------%n");
-                        System.out.printf(Color.GREEN_BOLD+
-                                          "           REMOVER CHAVE          %n"+Color.RESET);
+                        System.out.printf(Color.GREEN_BOLD +
+                                "           REMOVER CHAVE          %n" + Color.RESET);
                         System.out.printf("---------------------------------%n");
                         System.out.print(enterKey);
-                        key = input.nextLine();
+                        keyNum = input.nextLine();
                         // REMOVER CHAVE
-
-                        System.out.println(Color.WHITE_BOLD+successOp);
+                        saeKey.removeKey(keyNum);
+                        System.out.println(Color.WHITE_BOLD + successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD + failedOp + e.getMessage() + Color.RESET);
                     }
                     break;
                 case 6:
                     try {
                         System.out.printf("--------------------------------%n");
-                        System.out.printf(Color.GREEN_BOLD+"         REMOVER RESERVA        %n"+Color.RESET);
+                        System.out.printf(Color.GREEN_BOLD + "         REMOVER RESERVA        %n" + Color.RESET);
                         System.out.printf("--------------------------------%n");
                         System.out.print(enterID);
                         id = input.nextLine();
                         sae.removeReserve(id);
-                        System.out.println(Color.WHITE_BOLD+successOp);
+                        System.out.println(Color.WHITE_BOLD + successOp);
                     } catch (Exception e) {
-                        System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
+                        System.out.println(Color.WHITE_BOLD + failedOp + e.getMessage() + Color.RESET);
                     }
                     break;
                 case 7:
-                   try{
-                       System.out.printf("----------------------------------------------------------------%n");
-                       System.out.printf(Color.GREEN_BOLD+
-                               "                        ALTERAR PROFESSOR                        %n"+Color.RESET);
-                       System.out.printf("----------------------------------------------------------------%n");
-                       System.out.print("Digite o SIAPE que deseja alterar: ");
-                       Siap = input.nextLine();
-                       System.out.println("Alterar nome: ");
-                       name = input.nextLine();
-                       System.out.println("Alterar Siap: ");
-                       Siap = input.nextLine();
-                       System.out.println("Alterar Nivel de Acesso: ");
-                       NivelAcess = input.nextInt();
-                       saeTeacher.changeTeacher(name,Siap,NivelAcess);
+                    try {
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.printf(Color.GREEN_BOLD +
+                                "                        ALTERAR PROFESSOR                        %n" + Color.RESET);
+                        System.out.printf("----------------------------------------------------------------%n");
+                        System.out.print("Digite o SIAPE que deseja alterar: ");
+                        Siap = input.nextLine();
+                        System.out.println("Alterar nome: ");
+                        name = input.nextLine();
+                        System.out.println("Alterar Siap: ");
+                        Siap = input.nextLine();
+                        System.out.println("Alterar Nivel de Acesso: ");
+                        NivelAcess = input.nextInt();
+                        saeTeacher.changeTeacher(name, Siap, NivelAcess);
 
-                   } catch( TeacherNotFoundException| EmptyVectorException msg){
-                    System.out.println(msg.getMessage());
-                   }
+                    } catch (TeacherNotFoundException | EmptyVectorException msg) {
+                        System.out.println(msg.getMessage());
+                    }
                     break;
                 case 8:
-                    // change key
+                 try {
+                     System.out.printf("----------------------------------------------------------------%n");
+                     System.out.printf(Color.GREEN_BOLD +
+                             "                        ALTERAR CHAVE                        %n" + Color.RESET);
+                     System.out.printf("----------------------------------------------------------------%n");
+                     System.out.print("Digite a Chave que deseja consultar: ");
+                     keyNum = input.next();
+                     System.out.println("Alterar nome: ");
+                     name = input.nextLine();
+                     System.out.println("Alterar sala: ");
+                     room = input.nextLine();
+                     saeKey.changeKey(name, room);
+                 } catch (KeyNotFoundException | EmptyVectorException msg) {
+                     System.out.println(msg.getMessage());
+                 }
+
                     break;
                 case 9:
                     try {
@@ -201,47 +225,46 @@ public class app {
                         System.out.printf("----------------------------------------------------------------%n");
                         System.out.print(Color.CYAN);
                         System.out.printf(tableFormatReserve,
-                                re.getId(),  re.getTeacher(), re.getActivity(), re.getKey(),
+                                re.getId(),  re.getTeacher().getName(), re.getActivity(), re.getKey().getName(),
                                 re.getSolicitation_hour(), re.getDevolution_hour()+Color.RESET);
                         System.out.printf("----------------------------------------------------------------%n");
 
                         System.out.println("=====================");
                         System.out.println("1 - Professor ");
-                        System.out.println("2 - Chave ");
-                        System.out.println("3 - Atividade ");
-                        System.out.println("4 - Hora de Solicitação ");
-                        System.out.println("5 - Hora de Devolução ");
+                        System.out.println("2 - Atividade ");
+                        System.out.println("3 - Hora de Solicitação ");
+                        System.out.println("4 - Hora de Devolução ");
                         System.out.println("=====================");
                         System.out.print("Escolha uma opção para alterar: ");
                         op = input.nextInt();
                         input.nextLine(); // BUG FILHA DA PUTA
 
+                        te = saeTeacher.consultTeacher(re.getTeacher().getSiap());
+
                         switch (op) {
                             case 1: // Professor
                                 System.out.println("Digite o SIAPE do novo Professor: ");
                                 Siap = input.nextLine();
-                                System.out.println(saeTeacher.consultTeacher(Siap).getName());
-                                sae.changeReserve(id, op, Siap);
+                                te = saeTeacher.consultTeacher(Siap);
+                                sae.changeReserve(id, op, Siap, te);
                                 System.out.println(successOp);
                                 break;
-                            case 2: // key
-                                break;
-                            case 3: // Atividade
+                            case 2: // Atividade
                                 System.out.println("Digite a nova atividade: ");
                                 goal = input.nextLine();
-                                sae.changeReserve(id, op, goal);
+                                sae.changeReserve(id, op, goal, te);
                                 System.out.println(successOp);
                                 break;
-                            case 4: // H. SOli
+                            case 3: // H. SOli
                                 System.out.println("Digite a nova Hora de Solicitação: ");
                                 soliHour = input.nextLine();
-                                sae.changeReserve(id, op, soliHour);
+                                sae.changeReserve(id, op, soliHour, te);
                                 System.out.println(successOp);
                                 break;
-                            case 5: // H. Devo
+                            case 4: // H. Devo
                                 System.out.println("Digite a nova Hora de Devolução: ");
                                 devolHour = input.nextLine();
-                                sae.changeReserve(id, op, devolHour);
+                                sae.changeReserve(id, op, devolHour, te);
                                 System.out.println(successOp);
                                 break;
                             default:
@@ -260,7 +283,7 @@ public class app {
                         System.out.printf("---------------------------------------------------%n");
                         System.out.print(enterSIAPE);
                         Siap = input.next();
-                        te = tea.consult(Siap);
+                        te = saeTeacher.consultTeacher(Siap);
                         System.out.printf("---------------------------------------------------%n");
                         System.out.printf(tableFormatTeacher, "SIAPE", "PROFESSOR", "NVL. ACESSO");
                         System.out.printf("---------------------------------------------------%n");
@@ -279,15 +302,14 @@ public class app {
                                           "    CONSULTAR CHAVE    %n"+Color.RESET);
                         System.out.printf("-----------------------%n");
                         System.out.print(enterKey);
-                        key = input.next();
-                        re = sae.consultReserve(key);
+                        keyNum = input.next();
+                        key = saeKey.consultKey(keyNum);
                         // metodo de consulta
                         System.out.printf("-----------------------%n");
                         System.out.printf(tableFormatKey, "NUMERO", "SALA DE ACESSO");
                         System.out.printf("-----------------------%n");
                         System.out.print(Color.CYAN);
-                        System.out.printf(tableFormatKey,
-                                re.getId(),  re.getActivity() /*metodos get*/+Color.RESET);
+                        System.out.printf(tableFormatKey, key.getName(),  key.getRoom() /*metodos get*/+Color.RESET);
                         System.out.printf("-----------------------%n");
                     } catch (Exception e) {
                         System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
@@ -308,7 +330,7 @@ public class app {
                         System.out.printf("----------------------------------------------------------------%n");
                         System.out.print(Color.CYAN);
                         System.out.printf(tableFormatReserve,
-                                re.getId(),  re.getTeacher(), re.getActivity(), re.getKey(),
+                                re.getId(),  re.getTeacher().getName(), re.getActivity(), re.getKey().getName(),
                                 re.getSolicitation_hour(), re.getDevolution_hour()+Color.RESET);
                         System.out.printf("----------------------------------------------------------------%n");
                     } catch (Exception e) {
@@ -336,17 +358,17 @@ public class app {
                     break;
                 case 14:
                     try {
-                        res = sae.listReserves();
+                        keys = saeKey.listKey();
                         System.out.printf("-----------------------%n");
                         System.out.printf(Color.GREEN_BOLD+
                                           "     LISTAR CHAVES     %n"+Color.RESET);
                         System.out.printf("-----------------------%n");
                         System.out.printf(tableFormatKey, "NUMERO", "SALA DE ACESSO");
                         System.out.printf("-----------------------%n");
-                        for (int i = 0; i < res.length; i++) {
+                        for (int i = 0; i < keys.length; i++) {
                             System.out.print(Color.CYAN);
                             System.out.printf(tableFormatKey,
-                                    res[i].getId(),  res[i].getActivity() /*metodos get*/+Color.RESET);
+                                    keys[i].getName(), keys[i].getRoom() /*metodos get*/+Color.RESET);
                         }
                         System.out.printf("-----------------------%n");
                     } catch (Exception e) {
@@ -365,7 +387,8 @@ public class app {
                         for (int i = 0; i < res.length; i++) {
                             System.out.print(Color.CYAN);
                             System.out.printf(tableFormatReserve,
-                                    res[i].getId(),  res[i].getTeacher().getName(), res[i].getActivity(), res[i].getKey(),
+                                    res[i].getId(),  res[i].getTeacher().getName(), res[i].getActivity(),
+                                    res[i].getKey().getName(),
                                     res[i].getSolicitation_hour(), res[i].getDevolution_hour()+Color.RESET);
                         }
                         System.out.printf("----------------------------------------------------------------%n");

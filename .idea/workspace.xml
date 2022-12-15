@@ -4,28 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a01f943-cd63-405f-888d-67ca64550049" name="Changes" comment="Change reserve option (in progress)">
-      <change afterPath="$PROJECT_DIR$/src/fachada/SaeTeacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fachada/SaeTeacherInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo.md" afterDir="false" />
+    <list default="true" id="3a01f943-cd63-405f-888d-67ca64550049" name="Changes" comment="ricardo 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dados/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dados/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excecao/EmptyVectorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/EmptyVectorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excecao/FullVectorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/FullVectorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excecao/ReserveNotExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/ReserveNotExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/excecao/TeacherNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/TeacherNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dados/Reserve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Reserve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fachada/Sae.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/Sae.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fachada/SaeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/SaeInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/negocio/TeacherRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/TeacherRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/negocio/TeacherRegistrationInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/TeacherRegistrationInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/KeyInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/TeacherInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/todo.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +38,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2IdJFaDFsHCk4cYNB9VpNJG54Zv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -201,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670815671383</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ricardo 1">
+      <created>1671107341888</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1671107341888</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -238,7 +237,8 @@
     <MESSAGE value="GUI reserve done + green menu" />
     <MESSAGE value="GUI Colorful (in progress)" />
     <MESSAGE value="GUI 90% completed without function for Key and Teacher" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI 90% completed without function for Key and Teacher" />
+    <MESSAGE value="ricardo 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="ricardo 1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PROG_2$app.ic" NAME="app Coverage Results" MODIFIED="1670549296171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
