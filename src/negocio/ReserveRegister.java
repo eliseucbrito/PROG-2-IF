@@ -1,16 +1,15 @@
 package negocio;
 
 import dados.Reserve;
-import excecao.EmptyVectorException;
-import excecao.FullVectorException;
-import excecao.ReserveNotExistsException;
-import excecao.ReserveNotFoundedException;
+import dados.Teacher;
+import excecao.*;
 import repositorio.ReserveInterface;
 import repositorio.ReserveRepository;
 
 public class ReserveRegister implements ReserveInterface {
 
     private ReserveRepository reserveRepository;
+    private TeacherRegistration teacherRegistration;
 
     public ReserveRegister() {
         this.reserveRepository = new ReserveRepository();
@@ -27,8 +26,32 @@ public class ReserveRegister implements ReserveInterface {
     }
 
     @Override // juntar todos os repositorios
-    public void changeReserve(String id, int op, String newValue) throws ReserveNotExistsException, EmptyVectorException {
+    public Reserve changeReserve(String id, int op, String newValue) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException {
+        Reserve reChange = this.reserveRepository.consultReserve(id);
 
+
+        switch (op) {
+            case 1: // Teacher
+                Teacher newTeacher = this.teacherRegistration.consult(newValue);
+                System.out.println("newTeacher: " + newTeacher);
+                reChange.setTeacher(newTeacher);
+                break;
+            case 2:
+                break;
+            case 3: // goal
+                reChange.setActivity(newValue);
+                break;
+            case 4: // goal
+                reChange.setSolicitation_hour(newValue);
+                break;
+            case 5: // goal
+                reChange.setDevolution_hour(newValue);
+                break;
+            default:
+                break;
+        }
+        this.reserveRepository.updateReserve(reChange);
+        return reChange;
     }
 
     @Override

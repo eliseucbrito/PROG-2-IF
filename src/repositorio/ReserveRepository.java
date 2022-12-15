@@ -3,7 +3,6 @@ package repositorio;
 import dados.Reserve;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
-import excecao.ReserveNotExistsException;
 import excecao.ReserveNotFoundedException;
 
 public class ReserveRepository implements ReserveInterface {
@@ -54,48 +53,28 @@ public class ReserveRepository implements ReserveInterface {
 
     }
 
-    @Override // Acho que esse metodo vai ter que ser no pacote NEGOCIO, pq vai ter que usar outras classes
-    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException {
+    @Override
+    public Reserve changeReserve(String id, int op, String newValue) throws EmptyVectorException, ReserveNotFoundedException {
         Reserve re = null;
-        if (this.index > 0) {
+        if (this.index >= 0) {
             boolean found = false;
             int indexFound = 0;
-            Reserve r = null;
-
-            for (int i = 0; i <= this.index; i++) { // Looking for reserve
-                if (id.equals(this.reserve[i].getId())) {
+            for (int i = 0; i <= this.index; i++) { // erro de consulta, não tá encontrando
+                if (id.equals((this.reserve[i].getId()))) {
                     found = true;
                     indexFound = i;
                     break;
                 }
-            };
-
+            }
             if (found) {
                 re = this.reserve[indexFound];
-
-                switch (op) {
-                    case 1: // Teacher
-
-                        break;
-                    case 2: // Key
-
-                        break;
-                    case 3: // Activity
-                        re.setActivity(newValue);
-                        break;
-                    case 4: // Solicitation Hour
-                        re.setSolicitation_hour(newValue);
-                        break;
-                    case 5: // Devolution Hour
-                        re.setDevolution_hour(newValue);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Invalid option!");
-                }
+            } else {
+                throw new ReserveNotFoundedException();
             }
         } else {
             throw new EmptyVectorException();
         }
+        return re;
     }
 
     @Override
