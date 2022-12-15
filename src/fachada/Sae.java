@@ -26,7 +26,7 @@ public class Sae implements SaeInterface {
     }
 
     @Override
-    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException {
+    public void changeReserve(String id, int op, String newValue) throws EmptyVectorException, TeacherNotFoundException, ReserveNotFoundedException, FullVectorException {
         this.reserveRegister.changeReserve(id, op, newValue);
     }
 
@@ -45,36 +45,5 @@ public class Sae implements SaeInterface {
         return this.reserveRegister.list();
     }
 //===================================teacher===========================//
-    private TeacherRegistration teacherRegistration;
 
-    public Professores() {
-        this.teacherRegistration = new TeacherRegistration();
-    }
-    @Override
-    public void insertTeacher(Teacher te) throws FullVectorException{
-        this.teacherRegistration.insert(te);
-    }
-    @Override
-    public Teacher consultTeacher(String Siap) throws EmptyVectorException, TeacherNotFoundException{
-        return this.teacherRegistration.consult(Siap);
-
-    }
-    @Override
-    public void removeTeacher(String Siap) throws TeacherNotFoundException, EmptyVectorException {
-        this.teacherRegistration.remove(Siap);
-
-    }
-    @Override
-    public Teacher[] listTeacher()throws EmptyVectorException{
-        return this.teacherRegistration.list();
-    }
-    @Override
-    public void changeTeacher (String nome, String Siap, int NivelAcess) throws TeacherNotFoundException,EmptyVectorException{
-        this.teacherRegistration.change(nome,Siap,NivelAcess);
-    }
-
-    @Override
-    public void updateTeacher(Teacher te)throws EmptyVectorException, TeacherNotFoundException{
-        this.teacherRegistration.update(te);
-    }
 }

@@ -7,6 +7,7 @@ import excecao.FullVectorException;
 import excecao.ReserveNotFoundedException;
 import excecao.TeacherNotFoundException;
 import fachada.Sae;
+import fachada.SaeTeacher;
 import negocio.TeacherRegistration;
 
 import java.util.Scanner;
@@ -40,6 +41,7 @@ public class app {
         Sae sae = new Sae();
         Teacher teachers[];
         Reserve res[]; // for list reserves
+        SaeTeacher saeTeacher = new SaeTeacher();
 
         do {
             System.out.print(Color.GREEN_BOLD);
@@ -75,14 +77,14 @@ public class app {
                     break;
                 case 1:
                     try {
-                        System.out.print("Digite o Nome do professor: ");
+                        System.out.print("Nome do professor: ");
                         name = input.nextLine();
-                        System.out.print("Digite o Siap: ");
+                        System.out.print("Siap: ");
                         Siap = input.next();
-                        System.out.print("Digite o Nivel de Acesso: ");
+                        System.out.print("Nivel de Acesso: ");
                         NivelAcess = input.nextInt();
                         te = new Teacher(name,Siap,NivelAcess);
-                        tea.insert(te);
+                        saeTeacher.insertTeacher(te);
                     } catch (FullVectorException msg) {
                         System.out.println(msg.getMessage());
                     }
@@ -110,10 +112,9 @@ public class app {
                         devolHour = input.nextLine();
                         System.out.print("ID: ");
                         id = input.nextLine();
-                        te = tea.consult(Siap);
+                        te = saeTeacher.consultTeacher(Siap);
                         re = new Reserve(te, key, goal, soliHour, devolHour, id);
                         sae.registerReservation(re);
-
                         System.out.println(Color.WHITE_BOLD+successOp);
                     } catch (Exception e) {
                         System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
@@ -127,7 +128,7 @@ public class app {
                         System.out.printf("---------------------------------%n");
                         System.out.print(enterSIAPE);
                         Siap = input.nextLine();
-                        // REMOVER PROFESSOR
+                        saeTeacher.removeTeacher(Siap);
                         System.out.println(Color.WHITE_BOLD+successOp);
                     } catch (Exception e) {
                         System.out.println(Color.WHITE_BOLD+failedOp+ e.getMessage()+Color.RESET);
@@ -163,15 +164,19 @@ public class app {
                     break;
                 case 7:
                    try{
-                       System.out.println("Digite o Siap: ");
-                       Siap = input.next();
+                       System.out.printf("----------------------------------------------------------------%n");
+                       System.out.printf(Color.GREEN_BOLD+
+                               "                        ALTERAR PROFESSOR                        %n"+Color.RESET);
+                       System.out.printf("----------------------------------------------------------------%n");
+                       System.out.print("Digite o SIAPE que deseja alterar: ");
+                       Siap = input.nextLine();
                        System.out.println("Alterar nome: ");
-                       name = input.next();
+                       name = input.nextLine();
                        System.out.println("Alterar Siap: ");
-                       Siap = input.next();
+                       Siap = input.nextLine();
                        System.out.println("Alterar Nivel de Acesso: ");
                        NivelAcess = input.nextInt();
-                      tea.change(name,Siap,NivelAcess);
+                       saeTeacher.changeTeacher(name,Siap,NivelAcess);
 
                    } catch( TeacherNotFoundException| EmptyVectorException msg){
                     System.out.println(msg.getMessage());
@@ -191,7 +196,6 @@ public class app {
                         re = sae.consultReserve(id);
                         System.out.printf(Color.GREEN_BOLD+
                                 "                        RESERVA ATUAL                        %n"+Color.RESET);
-                        System.out.printf("----------------------------------------------------------------%n");
                         System.out.printf("----------------------------------------------------------------%n");
                         System.out.printf(tableFormatReserve, "ID", "PROFESSOR", "ATIVIDADE", "CHAVE", "H. SOLIC", "H. DEVOL");
                         System.out.printf("----------------------------------------------------------------%n");
@@ -216,6 +220,7 @@ public class app {
                             case 1: // Professor
                                 System.out.println("Digite o SIAPE do novo Professor: ");
                                 Siap = input.nextLine();
+                                System.out.println(saeTeacher.consultTeacher(Siap).getName());
                                 sae.changeReserve(id, op, Siap);
                                 System.out.println(successOp);
                                 break;
@@ -256,7 +261,6 @@ public class app {
                         System.out.print(enterSIAPE);
                         Siap = input.next();
                         te = tea.consult(Siap);
-                        // metodo de consulta
                         System.out.printf("---------------------------------------------------%n");
                         System.out.printf(tableFormatTeacher, "SIAPE", "PROFESSOR", "NVL. ACESSO");
                         System.out.printf("---------------------------------------------------%n");
@@ -313,7 +317,7 @@ public class app {
                     break;
                 case 13:
                     try {
-                        teachers = tea.list();
+                        teachers = saeTeacher.listTeacher();
                         System.out.printf("---------------------------------------------%n");
                         System.out.printf(Color.GREEN_BOLD+
                                 "                LISTAR PROFESSORES                %n"+Color.RESET);
@@ -323,8 +327,7 @@ public class app {
                         for (int i = 0; i < teachers.length; i++) {
                             System.out.print(Color.CYAN);
                             System.out.printf(tableFormatTeacher,
-                                    teachers[i].getSiap(),  teachers[i].getName(), teachers[i].getNivelAcess()
-                                    /*metodos get*/);
+                                    teachers[i].getSiap(),  teachers[i].getName(), teachers[i].getNivelAcess());
                         }
                         System.out.printf("---------------------------------------------%n");
                     } catch (Exception e) {
@@ -362,7 +365,7 @@ public class app {
                         for (int i = 0; i < res.length; i++) {
                             System.out.print(Color.CYAN);
                             System.out.printf(tableFormatReserve,
-                                    res[i].getId(),  res[i].getTeacher(), res[i].getActivity(), res[i].getKey(),
+                                    res[i].getId(),  res[i].getTeacher().getName(), res[i].getActivity(), res[i].getKey(),
                                     res[i].getSolicitation_hour(), res[i].getDevolution_hour()+Color.RESET);
                         }
                         System.out.printf("----------------------------------------------------------------%n");
