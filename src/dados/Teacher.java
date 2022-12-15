@@ -40,10 +40,10 @@ public class Teacher {
         this.NivelAcess = NivelAcess;
     }
 
-public void change (String name, String Siap,int NivelAcess){
+    public void change (String name, String Siap,int NivelAcess){
         this.name = name;
         this.Siap = Siap;
         this.NivelAcess = NivelAcess;
-}
+    }
 
 }

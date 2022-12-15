@@ -16,10 +16,10 @@ public class TeacherRepository implements TeacherInterface{
 
     }
     @Override
-    public void insert(Teacher t) throws FullVectorException {
+    public void insert(Teacher te) throws FullVectorException {
         this.index = this.index+1;
         if(this.index<MAX){
-            Teachers[index] = t;
+            Teachers[index] = te;
 
         }else{
           throw new FullVectorException();
@@ -27,8 +27,8 @@ public class TeacherRepository implements TeacherInterface{
         }
     }
     @Override
-    public Teacher consult (String Siap)throws TeacherNotFoundException,EmptyVectorException {
-        Teacher te = null;
+    public Teacher consult  (String Siap)throws TeacherNotFoundException,EmptyVectorException {
+        Teacher t = null;
         if(this.index >=0){
             boolean find = false;
             int indexfind = 0;
@@ -40,7 +40,7 @@ public class TeacherRepository implements TeacherInterface{
                 }
             }
             if(find == true){
-                te = this.Teachers[indexfind];
+                t = this.Teachers[indexfind];
 
             }else{
                 throw new TeacherNotFoundException();
@@ -48,7 +48,7 @@ public class TeacherRepository implements TeacherInterface{
         }else{
             throw new EmptyVectorException();
         }
-        return te;
+        return t;
     }
 
     @Override
@@ -78,9 +78,9 @@ public class TeacherRepository implements TeacherInterface{
     }
 
     @Override
-    public void update(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
-        Teacher t_old = this.consult(t.getSiap());
-        t_old = t;
+    public void update(Teacher te) throws EmptyVectorException, TeacherNotFoundException {
+        Teacher teold = this.consult(te.getSiap());
+        teold = te;
 
     }
 

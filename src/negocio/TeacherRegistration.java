@@ -4,7 +4,7 @@ import dados.Teacher;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.TeacherNotFoundException;
-import repositorio.TeacherRepository;
+
 
 public class TeacherRegistration implements TeacherRegistrationInterface {
 
@@ -15,8 +15,8 @@ public class TeacherRegistration implements TeacherRegistrationInterface {
     }
 
     @Override
-    public void insert(Teacher t) throws FullVectorException {
-        this.teacherRepository.insert(t);
+    public void insert(Teacher te) throws FullVectorException {
+        this.teacherRepository.insert(te);
 
     }
 
@@ -43,7 +43,7 @@ public class TeacherRegistration implements TeacherRegistrationInterface {
         return this.teacherRepository.list();
     }
 
-    public void update(Teacher t) throws EmptyVectorException, TeacherNotFoundException {
-        this.teacherRepository.update(t);
+    public void update(Teacher te) throws EmptyVectorException, TeacherNotFoundException {
+        this.teacherRepository.update(te);
     }
 }
