@@ -3,13 +3,15 @@ package negocio;
 import dados.Reserve;
 import dados.Teacher;
 import excecao.*;
+import fachada.SaeTeacher;
 import repositorio.ReserveInterface;
 import repositorio.ReserveRepository;
 
 public class ReserveRegister implements ReserveInterface {
 
     private ReserveRepository reserveRepository;
-    private TeacherRegistration teacherRegistration;
+
+    SaeTeacher saeTeacher = new SaeTeacher();
 
     public ReserveRegister() {
         this.reserveRepository = new ReserveRepository();
@@ -25,16 +27,22 @@ public class ReserveRegister implements ReserveInterface {
         this.reserveRepository.removeReserve(id);
     }
 
-    @Override // juntar todos os repositorios
-    public Reserve changeReserve(String id, int op, String newValue) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException {
+    @Override
+    public Reserve changeReserve(String id, int op, String newValue) throws EmptyVectorException, ReserveNotFoundedException, TeacherNotFoundException, FullVectorException {
         Reserve reChange = this.reserveRepository.consultReserve(id);
 
 
         switch (op) {
             case 1: // Teacher
-                Teacher newTeacher = this.teacherRegistration.consult(newValue);
-                System.out.println("newTeacher: " + newTeacher);
-                reChange.setTeacher(newTeacher);
+                reChange = this.reserveRepository.consultReserve(id);
+                System.out.println("NEGOCIO"+saeTeacher);
+                Teacher te = saeTeacher.consultTeacher(newValue);
+
+                System.out.println(reChange.getId());
+                System.out.println(reChange.getTeacher());
+                System.out.println(te.getSiap());
+                System.out.println(te.getName());
+                this.reserveRepository.registerReservation(reChange);
                 break;
             case 2:
                 break;

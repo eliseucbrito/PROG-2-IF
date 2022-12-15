@@ -1,8 +1,12 @@
+
 package dados;
 
+
 public class Teacher {
+    
     private String name;
     private String Siap;
+
     private int NivelAcess;
 
     public Teacher(){
@@ -40,10 +44,14 @@ public class Teacher {
         this.NivelAcess = NivelAcess;
     }
 
-    public void change (String name, String Siap,int NivelAcess){
+public void change (String name, String Siap,int NivelAcess){
         this.name = name;
         this.Siap = Siap;
         this.NivelAcess = NivelAcess;
-    }
+}
 
 }
+
+    
+    
+

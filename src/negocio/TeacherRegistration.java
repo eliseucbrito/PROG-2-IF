@@ -1,16 +1,14 @@
 package negocio;
-import repositorio.TeacherRepository;
 import dados.Teacher;
 import excecao.EmptyVectorException;
 import excecao.FullVectorException;
 import excecao.TeacherNotFoundException;
-
-
+import repositorio.TeacherRepository;
 public class TeacherRegistration implements TeacherRegistrationInterface {
-
+     
     private TeacherRepository teacherRepository;
 
-    public TeacherRegistration() {
+     public TeacherRegistration() {
         this.teacherRepository = new TeacherRepository();
     }
 
@@ -43,7 +41,11 @@ public class TeacherRegistration implements TeacherRegistrationInterface {
         return this.teacherRepository.list();
     }
 
+    @Override
     public void update(Teacher te) throws EmptyVectorException, TeacherNotFoundException {
         this.teacherRepository.update(te);
     }
 }
+
+    
+

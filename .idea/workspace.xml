@@ -4,22 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="Teacher done">
+    <list default="true" id="3a01f943-cd63-405f-888d-67ca64550049" name="Changes" comment="Change reserve option (in progress)">
+      <change afterPath="$PROJECT_DIR$/src/fachada/SaeTeacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fachada/SaeTeacherInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dados/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Key.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dados/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
-    </list>
-
-    <list default="true" id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="GUI Colorful (in progress)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dados/Reserve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Reserve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dados/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dados/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/excecao/EmptyVectorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/EmptyVectorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/excecao/FullVectorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/FullVectorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/excecao/ReserveNotExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/ReserveNotExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/excecao/TeacherNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/excecao/TeacherNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fachada/Sae.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/Sae.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fachada/SaeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fachada/SaeInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/app.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/ReserveRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/TeacherRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/TeacherRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/negocio/TeacherRegistrationInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/TeacherRegistrationInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/KeyInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/KeyRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/ReserveRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositorio/TeacherInterface.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositorio/TeacherRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,9 +35,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
         <option value="Interface" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -71,16 +76,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="55464e21-663b-459e-b045-9ab0a2fb20a4" name="Changes" comment="" />
+      <changelist id="3a01f943-cd63-405f-888d-67ca64550049" name="Changes" comment="Change reserve option (in progress)" />
       <created>1670505431289</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670505431289</updated>
-
-      <workItem from="1670672394824" duration="1170000" />
-      <workItem from="1670733706848" duration="368000" />
-      <workItem from="1671045560604" duration="16281000" />
-
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1670506474278</created>
@@ -194,26 +194,6 @@
       <option name="project" value="LOCAL" />
       <updated>1670815095996</updated>
     </task>
-    <task id="LOCAL-00017" summary="Teacher done">
-      <created>1671057885605</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1671057885606</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Teacher done">
-      <created>1671057911172</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1671057911172</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
-    
-    <task id="LOCAL-00015" summary="GUI Colorful (in progress)">
-      <created>1670719022372</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
     <task id="LOCAL-00017" summary="GUI 90% completed without function for Key and Teacher">
       <created>1670815671383</created>
       <option name="number" value="00017" />

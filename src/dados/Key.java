@@ -1,4 +1,6 @@
+
 package dados;
+
 
 public class Key {
 
@@ -26,5 +28,10 @@ public class Key {
     public void setRoom(String room) {
         this.room = room;
     }
+    public void change (String name, String room){
+        this.name = name;
+        this.room = room;
+        
+}
 
 }
